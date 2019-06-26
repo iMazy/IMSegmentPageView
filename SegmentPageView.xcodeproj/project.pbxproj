@@ -12,6 +12,8 @@
 		64E4061522C0D84B00C4C1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E4061322C0D84B00C4C1E8 /* Main.storyboard */; };
 		64E4061722C0D84B00C4C1E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64E4061622C0D84B00C4C1E8 /* Assets.xcassets */; };
 		64E4061A22C0D84B00C4C1E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E4061822C0D84B00C4C1E8 /* LaunchScreen.storyboard */; };
+		64E4062522C0EDD400C4C1E8 /* SegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4062422C0EDD400C4C1E8 /* SegmentTitleView.swift */; };
+		64E4062722C0EDEC00C4C1E8 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4062622C0EDEC00C4C1E8 /* PageContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		64E4061622C0D84B00C4C1E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64E4061922C0D84B00C4C1E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64E4061B22C0D84B00C4C1E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64E4062422C0EDD400C4C1E8 /* SegmentTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTitleView.swift; sourceTree = "<group>"; };
+		64E4062622C0EDEC00C4C1E8 /* PageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,32 @@
 		64E4060E22C0D84B00C4C1E8 /* SegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
+				64E4062122C0D9C200C4C1E8 /* SegmentPageViewLib */,
 				64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */,
 				64E4061122C0D84B00C4C1E8 /* ViewController.swift */,
 				64E4061322C0D84B00C4C1E8 /* Main.storyboard */,
+				64E4062322C0D9E800C4C1E8 /* System File */,
+			);
+			path = SegmentPageView;
+			sourceTree = "<group>";
+		};
+		64E4062122C0D9C200C4C1E8 /* SegmentPageViewLib */ = {
+			isa = PBXGroup;
+			children = (
+				64E4062422C0EDD400C4C1E8 /* SegmentTitleView.swift */,
+				64E4062622C0EDEC00C4C1E8 /* PageContentView.swift */,
+			);
+			path = SegmentPageViewLib;
+			sourceTree = "<group>";
+		};
+		64E4062322C0D9E800C4C1E8 /* System File */ = {
+			isa = PBXGroup;
+			children = (
 				64E4061622C0D84B00C4C1E8 /* Assets.xcassets */,
 				64E4061822C0D84B00C4C1E8 /* LaunchScreen.storyboard */,
 				64E4061B22C0D84B00C4C1E8 /* Info.plist */,
 			);
-			path = SegmentPageView;
+			name = "System File";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64E4061222C0D84B00C4C1E8 /* ViewController.swift in Sources */,
+				64E4062522C0EDD400C4C1E8 /* SegmentTitleView.swift in Sources */,
 				64E4061022C0D84B00C4C1E8 /* AppDelegate.swift in Sources */,
+				64E4062722C0EDEC00C4C1E8 /* PageContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WN65XWFSMX;
 				INFOPLIST_FILE = SegmentPageView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WN65XWFSMX;
 				INFOPLIST_FILE = SegmentPageView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

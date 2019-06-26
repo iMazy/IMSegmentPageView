@@ -12,7 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let titleView = SegmentTitleView(frame: CGRect(x: 0, y: 100, width: 200, height: 40), titles: ["首页", "新闻", "汽车"], delegate: self, indicatorType: .width)
+        titleView.indicatorExtension = 20
+        titleView.isLeft = false
+        view.addSubview(titleView)
+    }
+}
+
+extension ViewController: SegmentTitleViewDelegate {
+    func segmentTitleView(_ titleView: SegmentTitleView, startIndex: Int, endIndex: Int) {
+        
     }
 }
 

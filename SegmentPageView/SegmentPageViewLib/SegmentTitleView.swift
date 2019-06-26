@@ -64,13 +64,15 @@ class SegmentTitleView: UIView {
     /// 当前选中标题索引，默认0
     var selectIndex: Int = 0 {
         didSet {
-            if selectIndex <= 0 || selectIndex > itemButtons.count - 1 {
+            if selectIndex < 0 || selectIndex > itemButtons.count - 1 {
                 return
             }
-            let lastButton = scrollView.viewWithTag(selectIndex + 666) as! UIButton
-            lastButton.isSelected = false
-            lastButton.titleLabel?.font = titleNormalFont
-            
+            itemButtons.forEach({ $0.isSelected = false })
+            let currentButton = scrollView.viewWithTag(selectIndex + 666) as! UIButton
+            currentButton.isSelected = true
+            currentButton.titleLabel?.font = titleSelectFont
+            setNeedsLayout()
+            layoutIfNeeded()
         }
     }
     /// 标题字体大小，默认15
@@ -118,14 +120,27 @@ class SegmentTitleView: UIView {
     /// indicator height 默认2
     var indicatorHeight: CGFloat = 2
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     convenience init(frame: CGRect, titles: [String], delegate: SegmentTitleViewDelegate, indicatorType: IndicatorType) {
         self.init(frame: frame)
+        
+        indicatorView.backgroundColor = indicatorColor
+        scrollView.addSubview(indicatorView)
+        
+        self.addSubview(scrollView)
         
         self.titles = titles
         self.delegate = delegate
         self.indicatorType = indicatorType
-        setupTitles()
         
+        setupTitles()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupTitles() {
@@ -147,12 +162,12 @@ class SegmentTitleView: UIView {
             if itemButtons.count == self.selectIndex {
                 button.isSelected  = true
             }
+            button.sizeToFit()
             itemButtons.append(button)
         }
         setNeedsLayout()
         layoutIfNeeded()
     }
-    
     
     @objc func buttonClickAction(sender: UIButton) {
         let index = sender.tag - 666
@@ -196,6 +211,7 @@ class SegmentTitleView: UIView {
                     let itemButtonWidth = title.widthOfString(usingFont: titleFont) + itemMargin
                     let itemButtonHeight = self.bounds.height
                     button.frame = CGRect(x: currentX, y: 0, width: itemButtonWidth, height: itemButtonHeight)
+                    print(currentX)
                     currentX += itemButtonWidth
                 }
                 scrollView.contentSize = CGSize(width: currentX, height: scrollView.bounds.height)
@@ -203,6 +219,7 @@ class SegmentTitleView: UIView {
                 let itemButtonWidth = self.bounds.width / CGFloat(itemButtons.count)
                 let itemButtonHeight = self.bounds.height
                 itemButtons.enumerated().forEach { (index, button) in
+                    print(CGFloat(index) * itemButtonWidth)
                     button.frame = CGRect(x: CGFloat(index) * itemButtonWidth, y: 0, width: itemButtonWidth, height: itemButtonHeight)
                 }
                 scrollView.contentSize = CGSize(width: self.bounds.width, height: scrollView.bounds.height)

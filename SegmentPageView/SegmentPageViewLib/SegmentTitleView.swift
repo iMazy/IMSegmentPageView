@@ -39,8 +39,10 @@ class SegmentTitleView: UIView {
     }()
     private var itemButtons: [UIButton] = []
     private var indicatorView: UIView = UIView()
+    private var bottomLineView: UIView = UIView()
     private var indicatorType: IndicatorType = .default
-
+    private var isInitinaled: Bool = false
+    
     weak var delegate: SegmentTitleViewDelegate?
     ///
     private var titles: [String] = []
@@ -48,13 +50,6 @@ class SegmentTitleView: UIView {
     /// 是否靠左 默认是 yes
     var isLeft: Bool = true {
         didSet {
-            itemButtons.forEach { (button) in
-                if isLeft {
-                    button.contentHorizontalAlignment = .left
-                } else {
-                    button.contentHorizontalAlignment = .center
-                }
-            }
             setNeedsLayout()
             layoutIfNeeded()
         }
@@ -117,6 +112,29 @@ class SegmentTitleView: UIView {
             layoutIfNeeded()
         }
     }
+    
+    var bottomLineHeight: CGFloat = 0.5 {
+        didSet {
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
+    var showBottomLine: Bool = false {
+        didSet {
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
+    var bottomLineColor: UIColor = UIColor.lightGray {
+        didSet {
+            self.bottomLineView.backgroundColor = bottomLineColor
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
     /// indicator height 默认2
     var indicatorHeight: CGFloat = 2
     
@@ -128,8 +146,8 @@ class SegmentTitleView: UIView {
         self.init(frame: frame)
         
         indicatorView.backgroundColor = indicatorColor
+        scrollView.addSubview(bottomLineView)
         scrollView.addSubview(indicatorView)
-        
         self.addSubview(scrollView)
         
         self.titles = titles
@@ -151,11 +169,6 @@ class SegmentTitleView: UIView {
             button.setTitle(title, for: .normal)
             button.setTitleColor(titleNormalColor, for: .normal)
             button.setTitleColor(titleSelectColor, for: .selected)
-            if isLeft {
-                button.contentHorizontalAlignment = .left
-            } else {
-                button.contentHorizontalAlignment = .center
-            }
             button.titleLabel?.font = titleNormalFont
             self.scrollView.addSubview(button)
             button.addTarget(self, action: #selector(buttonClickAction(sender:)), for: .touchUpInside)
@@ -211,7 +224,6 @@ class SegmentTitleView: UIView {
                     let itemButtonWidth = title.widthOfString(usingFont: titleFont) + itemMargin
                     let itemButtonHeight = self.bounds.height
                     button.frame = CGRect(x: currentX, y: 0, width: itemButtonWidth, height: itemButtonHeight)
-                    print(currentX)
                     currentX += itemButtonWidth
                 }
                 scrollView.contentSize = CGSize(width: currentX, height: scrollView.bounds.height)
@@ -219,7 +231,6 @@ class SegmentTitleView: UIView {
                 let itemButtonWidth = self.bounds.width / CGFloat(itemButtons.count)
                 let itemButtonHeight = self.bounds.height
                 itemButtons.enumerated().forEach { (index, button) in
-                    print(CGFloat(index) * itemButtonWidth)
                     button.frame = CGRect(x: CGFloat(index) * itemButtonWidth, y: 0, width: itemButtonWidth, height: itemButtonHeight)
                 }
                 scrollView.contentSize = CGSize(width: self.bounds.width, height: scrollView.bounds.height)
@@ -236,8 +247,15 @@ class SegmentTitleView: UIView {
             }
             scrollView.contentSize = CGSize(width: currentX, height: self.scrollView.bounds.height)
         }
+        
+        
+        bottomLineView.isHidden = !showBottomLine
+        if showBottomLine {
+            bottomLineView.frame = CGRect(x: 0, y: scrollView.bounds.height - bottomLineHeight, width: scrollView.bounds.width, height: bottomLineHeight)
+            scrollView.bringSubviewToFront(bottomLineView)
+        }
         //
-        moveIndicatorView(animated: true)
+        moveIndicatorView(animated: isInitinaled)
     }
     
     /// 移动指示器
@@ -249,26 +267,28 @@ class SegmentTitleView: UIView {
         let indicatorWidth = titles[selectIndex].widthOfString(usingFont: titleFont)
         
         let scrollViewHeight = scrollView.bounds.height
+        let bottonOffset = showBottomLine ? bottomLineHeight : 0
         UIView.animate(withDuration: animated ? 0.25 : 0, animations: {
             switch self.indicatorType {
             case .default:
-                self.indicatorView.frame = CGRect(x: selectButton.frame.origin.x, y: scrollViewHeight - self.indicatorHeight,
+                self.indicatorView.frame = CGRect(x: selectButton.frame.origin.x, y: scrollViewHeight - self.indicatorHeight - bottonOffset,
                                                   width: selectButton.bounds.width, height: self.indicatorHeight)
             case .equalTitle:
-                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight)
+                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight - bottonOffset)
                 self.indicatorView.bounds = CGRect(x: 0, y: 0, width: indicatorWidth, height: self.indicatorHeight)
             case .custom:
-                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight)
+                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight - bottonOffset)
                 self.indicatorView.bounds = CGRect(x: 0, y: 0, width: indicatorWidth + self.indicatorExtension * 2,
                                                    height: self.indicatorHeight)
             case .width:
-                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight)
+                self.indicatorView.center = CGPoint(x: selectButton.center.x, y: scrollViewHeight - self.indicatorHeight - bottonOffset)
                 self.indicatorView.bounds = CGRect(x: 0, y: 0, width: self.indicatorExtension, height: self.indicatorHeight)
             case .none:
                 self.indicatorView.frame = .zero
             }
         }, completion: { _ in
             self.scrollSelectButtonCenter(animated: animated)
+            self.isInitinaled = true
         })
     }
     

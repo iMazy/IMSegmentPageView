@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = SegmentTitleView(frame: CGRect(x: 0, y: 100, width: 200, height: 40), titles: ["首页", "新闻", "汽车"], delegate: self, indicatorType: .width)
+        let titleView = SegmentTitleView(frame: CGRect(x: 0, y: 100, width: 300, height: 40), titles: ["首页", "新闻", "汽车"], delegate: self, indicatorType: .equalTitle)
         titleView.indicatorExtension = 20
+        titleView.showBottomLine = false
+        titleView.bottomLineHeight = 0.5
+        titleView.bottomLineColor = .green
         titleView.isLeft = false
         view.addSubview(titleView)
     }

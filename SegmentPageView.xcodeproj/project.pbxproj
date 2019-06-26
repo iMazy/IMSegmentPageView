@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642075AC22C3916C003113D5 /* SegmentTitleProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642075AB22C3916C003113D5 /* SegmentTitleProperty.swift */; };
 		64E4061022C0D84B00C4C1E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */; };
 		64E4061222C0D84B00C4C1E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4061122C0D84B00C4C1E8 /* ViewController.swift */; };
 		64E4061522C0D84B00C4C1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E4061322C0D84B00C4C1E8 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		642075AB22C3916C003113D5 /* SegmentTitleProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTitleProperty.swift; sourceTree = "<group>"; };
 		64E4060C22C0D84B00C4C1E8 /* SegmentPageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegmentPageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64E4061122C0D84B00C4C1E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		64E4062122C0D9C200C4C1E8 /* SegmentPageViewLib */ = {
 			isa = PBXGroup;
 			children = (
+				642075AB22C3916C003113D5 /* SegmentTitleProperty.swift */,
 				64E4062422C0EDD400C4C1E8 /* SegmentTitleView.swift */,
 				64E4062622C0EDEC00C4C1E8 /* PageContentView.swift */,
 			);
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				642075AC22C3916C003113D5 /* SegmentTitleProperty.swift in Sources */,
 				64E4061222C0D84B00C4C1E8 /* ViewController.swift in Sources */,
 				64E4062522C0EDD400C4C1E8 /* SegmentTitleView.swift in Sources */,
 				64E4061022C0D84B00C4C1E8 /* AppDelegate.swift in Sources */,

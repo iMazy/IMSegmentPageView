@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SegmentPageView.xcodeproj">
+      location = "self:/Users/mazy/Mazy/Mazy/SegmentPageView/IMSegmentPageView.xcodeproj">
    </FileRef>
 </Workspace>

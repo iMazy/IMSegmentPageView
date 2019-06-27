@@ -1,6 +1,6 @@
 //
-//  SegmentTitleProperty.swift
-//  SegmentPageView
+//  IMSegmentTitleProperty.swift
+//  IMSegmentPageView
 //
 //  Created by Mazy on 2019/6/26.
 //  Copyright © 2019 Mazy. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SegmentTitleProperty {
+public class IMSegmentTitleProperty {
     
     public init() {}
     

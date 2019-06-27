@@ -10,10 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var titleView: IMSegmentTitleView!
+    var pageView: IMPageContentView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let property = SegmentTitleProperty()
+        let property = IMSegmentTitleProperty()
         property.indicatorExtension = 20
         property.showBottomLine = false
         property.indicatorHeight = 2
@@ -24,10 +27,10 @@ class ViewController: UIViewController {
         property.bottomLineColor = .lightGray
         
         let titles = ["首页", "新闻", "汽车", "首页推荐", "News", "汽车推荐", "美图"]
-        let titleView = SegmentTitleView(frame: CGRect(x: 0, y: 100, width: 375, height: 40), titles: titles, property: property, indicatorType: .width)
+        self.titleView = IMSegmentTitleView(frame: CGRect(x: 0, y: 100, width: 375, height: 40), titles: titles, property: property, indicatorType: .width)
         titleView.delegate = self
         titleView.selectIndex = 3
-        view.addSubview(titleView)
+        view.addSubview(titleView!)
         
         var childVCs: [UIViewController] = []
         for i in titles {
@@ -37,22 +40,29 @@ class ViewController: UIViewController {
             childVCs.append(childVC)
         }
         
-        let pageView = PageContentView(Frame: CGRect(x: 0, y: 150, width: 375, height: 400), childVCs: childVCs, parentVC: self)
+        self.pageView = IMPageContentView(Frame: CGRect(x: 0, y: 150, width: 375, height: 400), childVCs: childVCs, parentVC: self)
         pageView.delegate = self
-        view.addSubview(pageView)
+        view.addSubview(pageView!)
     }
 }
 
-extension ViewController: SegmentTitleViewDelegate {
+extension ViewController: IMSegmentTitleViewDelegate {
     
-    func segmentTitleView(_ titleView: SegmentTitleView, startIndex: Int, endIndex: Int) {
+    func segmentTitleView(_ titleView: IMSegmentTitleView, startIndex: Int, endIndex: Int) {
+        print(endIndex)
+        pageView.contentViewCurrentIndex = endIndex
+    }
+}
+
+extension ViewController: IMPageContentDelegate {
+    
+    func contentViewDidScroll(_ contentView: IMPageContentView, startIndex: Int, endIndex: Int, progress: CGFloat) {
         
     }
-}
-
-extension ViewController: PageContentDelegate {
     
-    func contentViewDidScroll(_ contentView: PageContentView, startIndex: Int, endIndex: Int, progress: CGFloat) {
+    func contenViewDidEndDecelerating(_ contentView: IMPageContentView, startIndex: Int, endIndex: Int) {
+        print(endIndex)
+        titleView.selectIndex = endIndex
         
     }
 }

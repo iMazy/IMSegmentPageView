@@ -1,6 +1,6 @@
 //
-//  SegmentTitleView.swift
-//  SegmentPageView
+//  IMSegmentTitleView.swift
+//  IMSegmentPageView
 //
 //  Created by Mazy on 2019/6/24.
 //  Copyright © 2019 Mazy. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum IndicatorType {
+enum IMIndicatorType {
     case `default`
     case equalTitle
     case custom
@@ -16,16 +16,16 @@ enum IndicatorType {
     case none
 }
 
-protocol SegmentTitleViewDelegate: NSObjectProtocol {
+protocol IMSegmentTitleViewDelegate: NSObjectProtocol {
     
     /// 切换标题
     ///   - startIndex: 切换前标题索引
     ///   - endIndex: 切换后标题索引
-    func segmentTitleView(_ titleView: SegmentTitleView, startIndex: Int, endIndex: Int)
+    func segmentTitleView(_ titleView: IMSegmentTitleView, startIndex: Int, endIndex: Int)
     
 }
 
-class SegmentTitleView: UIView {
+class IMSegmentTitleView: UIView {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -37,14 +37,14 @@ class SegmentTitleView: UIView {
     private var itemButtons: [UIButton] = []
     private var indicatorView: UIView = UIView()
     private var bottomLineView: UIView = UIView()
-    private var indicatorType: IndicatorType = .default
+    private var indicatorType: IMIndicatorType = .default
     private var isInitinaled: Bool = false
     
-    weak var delegate: SegmentTitleViewDelegate?
+    weak var delegate: IMSegmentTitleViewDelegate?
     /// 标题
     private var titles: [String] = []
-    // 属性
-    private var property: SegmentTitleProperty!
+    /// 属性
+    private var property: IMSegmentTitleProperty!
     
     /// 当前选中标题索引，默认0
     var selectIndex: Int = 0 {
@@ -65,7 +65,7 @@ class SegmentTitleView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, titles: [String], property: SegmentTitleProperty, indicatorType: IndicatorType) {
+    convenience init(frame: CGRect, titles: [String], property: IMSegmentTitleProperty, indicatorType: IMIndicatorType) {
         self.init(frame: frame)
         
         scrollView.addSubview(bottomLineView)

@@ -1,6 +1,6 @@
 //
-//  PageContentView.swift
-//  SegmentPageView
+//  IMPageContentView.swift
+//  IMSegmentPageView
 //
 //  Created by Mazy on 2019/6/24.
 //  Copyright © 2019 Mazy. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// delagate
-protocol PageContentDelegate: NSObjectProtocol {
+protocol IMPageContentDelegate: NSObjectProtocol {
     
     /// PageContentView滑动调用
     ///
@@ -18,16 +18,7 @@ protocol PageContentDelegate: NSObjectProtocol {
     ///   - startIndex: 开始滑动页面索引
     ///   - endIndex: 结束滑动页面索引
     ///   - progress: 滑动进度
-    func contentViewDidScroll(_ contentView: PageContentView, startIndex: Int, endIndex: Int, progress: CGFloat)
-}
-
-// MARK: - optional
-extension PageContentDelegate {
-    
-    /// PageContentView 开始滑动
-    func contentViewWillBeginDragging(_ contentView: PageContentView) {
-        
-    }
+    func contentViewDidScroll(_ contentView: IMPageContentView, startIndex: Int, endIndex: Int, progress: CGFloat)
     
     /// PageContentView结束滑动
     ///
@@ -35,20 +26,27 @@ extension PageContentDelegate {
     ///   - contentView: PageContentView
     ///   - startIndex: 开始滑动索引
     ///   - endIndex: 结束滑动索引
-    func contenViewDidEndDecelerating(_ contentView: PageContentView, startIndex: Int, endIndex: Int) {
+    func contenViewDidEndDecelerating(_ contentView: IMPageContentView, startIndex: Int, endIndex: Int)
+}
+
+// MARK: - optional
+extension IMPageContentDelegate {
+    
+    /// PageContentView 开始滑动
+    func contentViewWillBeginDragging(_ contentView: IMPageContentView) {
         
     }
     
     /// PageContentView 结束拖拽
-    func contenViewDidEndDragging(_ contentView: PageContentView) {
+    func contenViewDidEndDragging(_ contentView: IMPageContentView) {
         
     }
 }
 
-class PageContentView: UIView {
+class IMPageContentView: UIView {
     
     /// PageContentDelegate
-    weak var delegate: PageContentDelegate?
+    weak var delegate: IMPageContentDelegate?
     /// 设置contentView当前展示的页面索引，默认为0
     var contentViewCurrentIndex: Int = 0 {
         didSet {
@@ -112,7 +110,7 @@ class PageContentView: UIView {
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension PageContentView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension IMPageContentView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVCs.count
@@ -131,7 +129,7 @@ extension PageContentView: UICollectionViewDataSource, UICollectionViewDelegate 
     }
 }
 
-extension PageContentView {
+extension IMPageContentView {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isSelectBtn = false

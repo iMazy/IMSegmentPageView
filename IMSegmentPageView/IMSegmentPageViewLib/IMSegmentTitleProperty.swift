@@ -50,4 +50,6 @@ public class IMSegmentTitleProperty {
     
     /// 底部分割线的颜色
     public var bottomLineColor: UIColor = UIColor.lightGray
+    /// 指示器类型
+    public var indicatorType: IMIndicatorType = .default
 }

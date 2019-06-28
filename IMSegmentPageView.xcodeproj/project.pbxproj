@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		642075AC22C3916C003113D5 /* IMSegmentTitleProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642075AB22C3916C003113D5 /* IMSegmentTitleProperty.swift */; };
+		645BD8D822C4949C00329BCD /* CustomTitleProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645BD8D722C4949C00329BCD /* CustomTitleProperty.swift */; };
 		64E4061022C0D84B00C4C1E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */; };
 		64E4061222C0D84B00C4C1E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E4061122C0D84B00C4C1E8 /* ViewController.swift */; };
 		64E4061522C0D84B00C4C1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E4061322C0D84B00C4C1E8 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		642075AB22C3916C003113D5 /* IMSegmentTitleProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMSegmentTitleProperty.swift; sourceTree = "<group>"; };
+		645BD8D722C4949C00329BCD /* CustomTitleProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleProperty.swift; sourceTree = "<group>"; };
 		64E4060C22C0D84B00C4C1E8 /* IMSegmentPageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMSegmentPageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64E4061122C0D84B00C4C1E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				64E4062122C0D9C200C4C1E8 /* IMSegmentPageViewLib */,
 				64E4060F22C0D84B00C4C1E8 /* AppDelegate.swift */,
 				64E4061122C0D84B00C4C1E8 /* ViewController.swift */,
+				645BD8D722C4949C00329BCD /* CustomTitleProperty.swift */,
 				64E4061322C0D84B00C4C1E8 /* Main.storyboard */,
 				64E4062322C0D9E800C4C1E8 /* System File */,
 			);
@@ -162,6 +165,7 @@
 			files = (
 				642075AC22C3916C003113D5 /* IMSegmentTitleProperty.swift in Sources */,
 				64E4061222C0D84B00C4C1E8 /* ViewController.swift in Sources */,
+				645BD8D822C4949C00329BCD /* CustomTitleProperty.swift in Sources */,
 				64E4062522C0EDD400C4C1E8 /* IMSegmentTitleView.swift in Sources */,
 				64E4061022C0D84B00C4C1E8 /* AppDelegate.swift in Sources */,
 				64E4062722C0EDEC00C4C1E8 /* IMPageContentView.swift in Sources */,

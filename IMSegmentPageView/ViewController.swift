@@ -16,20 +16,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let property = IMSegmentTitleProperty()
-        property.indicatorExtension = 20
-        property.showBottomLine = false
-        property.indicatorHeight = 2
-        property.bottomLineHeight = 0.5
-        property.bottomLineColor = .green
+        let property = CustomTitleProperty()
+//        property.indicatorExtension = 20
+//        property.showBottomLine = false
+        property.indicatorHeight = 3
+        property.indicatorType = .width
+//        property.bottomLineHeight = 0.5
+//        property.bottomLineColor = .green
+//        property.isLeft = false
+//        property.showBottomLine = true
+//        property.bottomLineColor = .lightGray
         property.isLeft = false
         property.showBottomLine = true
-        property.bottomLineColor = .lightGray
-        
-        let titles = ["首页", "新闻", "汽车", "首页推荐", "News", "汽车推荐", "美图"]
-        self.titleView = IMSegmentTitleView(frame: CGRect(x: 0, y: 100, width: 375, height: 40), titles: titles, property: property, indicatorType: .width)
+//        let titles = ["最受欢迎"]
+//        let titles = ["ZIXUAN", "mingren", "huarenmingxing", "shuzihongren", "tongzhen", "KOL", "
+        let titles = ["1天", "7天"]
+        self.titleView = IMSegmentTitleView(frame: CGRect(x: 0, y: 100, width: 375, height: 40), titles: titles, property: property)
         titleView.delegate = self
-        titleView.selectIndex = 3
+//        titleView.backgroundColor = .red
+//        titleView.selectIndex = 3
         view.addSubview(titleView!)
         
         var childVCs: [UIViewController] = []

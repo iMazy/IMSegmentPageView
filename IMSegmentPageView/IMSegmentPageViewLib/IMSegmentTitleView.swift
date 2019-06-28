@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum IMIndicatorType {
+public enum IMIndicatorType {
     case `default`
     case equalTitle
     case custom
@@ -65,16 +65,16 @@ class IMSegmentTitleView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, titles: [String], property: IMSegmentTitleProperty, indicatorType: IMIndicatorType) {
+    convenience init(frame: CGRect, titles: [String], property: IMSegmentTitleProperty) {
         self.init(frame: frame)
         
-        scrollView.addSubview(bottomLineView)
+        addSubview(scrollView)
         scrollView.addSubview(indicatorView)
-        self.addSubview(scrollView)
+        addSubview(bottomLineView)
         
         self.titles = titles
         self.property = property
-        self.indicatorType = indicatorType
+        self.indicatorType = property.indicatorType
         
         setupTitles()
     }
@@ -152,14 +152,14 @@ class IMSegmentTitleView: UIView {
                     button.frame = CGRect(x: currentX, y: 0, width: itemButtonWidth, height: itemButtonHeight)
                     currentX += itemButtonWidth
                 }
-                scrollView.contentSize = CGSize(width: currentX, height: scrollView.bounds.height)
+                scrollView.contentSize = CGSize(width: currentX, height: bounds.height)
             } else {
                 let itemButtonWidth = self.bounds.width / CGFloat(itemButtons.count)
                 let itemButtonHeight = self.bounds.height
                 itemButtons.enumerated().forEach { (index, button) in
                     button.frame = CGRect(x: CGFloat(index) * itemButtonWidth, y: 0, width: itemButtonWidth, height: itemButtonHeight)
                 }
-                scrollView.contentSize = CGSize(width: self.bounds.width, height: scrollView.bounds.height)
+                scrollView.contentSize = CGSize(width: self.bounds.width, height: bounds.height)
             }
         } else { //超出屏幕 可以滑动
             var currentX: CGFloat = 0
@@ -192,8 +192,8 @@ class IMSegmentTitleView: UIView {
         let titleFont = selectButton.isSelected ? property.titleSelectFont : property.titleNormalFont
         let indicatorWidth = titles[selectIndex].widthOfString(usingFont: titleFont)
         
-        let scrollViewHeight = scrollView.bounds.height
-        let bottonOffset = property.showBottomLine ? property.bottomLineHeight : 0
+        let scrollViewHeight = bounds.height
+        let bottonOffset: CGFloat = property.showBottomLine ? property.bottomLineHeight - 1.5 : 0
         UIView.animate(withDuration: animated ? 0.25 : 0, animations: {
             switch self.indicatorType {
             case .default:
@@ -219,6 +219,9 @@ class IMSegmentTitleView: UIView {
     }
     
     private func scrollSelectButtonCenter(animated: Bool) {
+        if selectIndex < 0 || selectIndex > itemButtons.count - 1 {
+            return
+        }
         let selectButton = itemButtons[selectIndex]
         let centerRect = CGRect(x: selectButton.center.x - scrollView.bounds.width / 2, y: 0,
                                 width: scrollView.bounds.width, height: scrollView.bounds.height)

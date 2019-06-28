@@ -192,7 +192,7 @@ class IMSegmentTitleView: UIView {
         let titleFont = selectButton.isSelected ? property.titleSelectFont : property.titleNormalFont
         let indicatorWidth = titles[selectIndex].widthOfString(usingFont: titleFont)
         
-        let scrollViewHeight = bounds.height
+        let scrollViewHeight = scrollView.bounds.height
         let bottonOffset: CGFloat = property.showBottomLine ? property.bottomLineHeight - 1.5 : 0
         UIView.animate(withDuration: animated ? 0.25 : 0, animations: {
             switch self.indicatorType {

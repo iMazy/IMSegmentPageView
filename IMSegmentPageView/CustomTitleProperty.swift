@@ -12,12 +12,13 @@ class CustomTitleProperty: IMSegmentTitleProperty {
     override init() {
         super.init()
         
-        self.indicatorColor = #colorLiteral(red: 0, green: 0.3185221255, blue: 0.5173624754, alpha: 1)
+        self.indicatorColor = .red
         self.titleNormalFont = UIFont.systemFont(ofSize: 15, weight: .regular)
         self.titleSelectFont = UIFont.systemFont(ofSize: 15, weight: .medium)
         self.indicatorExtension = 20
         self.indicatorHeight = 2
+        self.bottomLineColor = UIColor.lightGray.withAlphaComponent(0.5)
         self.titleNormalColor = #colorLiteral(red: 0.7059153914, green: 0.7501759529, blue: 0.7668043971, alpha: 1)
-        self.titleSelectColor = #colorLiteral(red: 0, green: 0.3185221255, blue: 0.5173624754, alpha: 1)
+        self.titleSelectColor = .red
     }
 }

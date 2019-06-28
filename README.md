@@ -18,6 +18,7 @@ Add `pod 'IMSegmentPageView'` to your `Podfile` and run `pod install`. Also add 
 
 ```
 use_frameworks!
+
 pod 'IMSegmentPageView'
 ```
 
@@ -51,7 +52,8 @@ Import IMSegmentPageView
 #### Add a pageView view with controllers
 ```
 var childVCs: [UIViewController] = [] // viewControllers
-let pageView = IMPageContentView(Frame: CGRect(x: 0, y: 0, width: 375, height: view.bounds.height - 40), childVCs: childVCs, parentVC: self)
+let contentFrame = CGRect.zero # set what you need
+let pageView = IMPageContentView(Frame: contentFrame, childVCs: childVCs, parentVC: self)
 pageView.delegate = self # if need, you should implement delegate methods
 view.addSubview(pageView!)
 ```

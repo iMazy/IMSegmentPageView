@@ -43,7 +43,7 @@ extension IMPageContentDelegate {
     }
 }
 
-class IMPageContentView: UIView {
+open class IMPageContentView: UIView {
     
     /// PageContentDelegate
     weak var delegate: IMPageContentDelegate?
@@ -112,16 +112,16 @@ class IMPageContentView: UIView {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension IMPageContentView: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVCs.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.contentView.subviews.forEach({ $0.removeFromSuperview() })
         let childVC = childVCs[indexPath.row]
         childVC.view.frame = cell.contentView.bounds

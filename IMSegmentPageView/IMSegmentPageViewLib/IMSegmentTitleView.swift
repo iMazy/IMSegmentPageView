@@ -25,7 +25,7 @@ protocol IMSegmentTitleViewDelegate: NSObjectProtocol {
     
 }
 
-class IMSegmentTitleView: UIView {
+open class IMSegmentTitleView: UIView {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -34,6 +34,7 @@ class IMSegmentTitleView: UIView {
         scrollView.scrollsToTop = false
         return scrollView
     }()
+    
     private var itemButtons: [UIButton] = []
     private var indicatorView: UIView = UIView()
     private var bottomLineView: UIView = UIView()
@@ -65,7 +66,7 @@ class IMSegmentTitleView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, titles: [String], property: IMSegmentTitleProperty) {
+    public convenience init(frame: CGRect, titles: [String], property: IMSegmentTitleProperty) {
         self.init(frame: frame)
         
         addSubview(scrollView)
@@ -79,7 +80,7 @@ class IMSegmentTitleView: UIView {
         setupTitles()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -117,7 +118,7 @@ class IMSegmentTitleView: UIView {
         moveIndicatorView(animated: true)
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         self.scrollView.frame = self.bounds

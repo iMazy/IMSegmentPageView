@@ -9,7 +9,7 @@
 import UIKit
 
 /// delagate
-protocol IMPageContentDelegate: NSObjectProtocol {
+public protocol IMPageContentDelegate: NSObjectProtocol {
     
     /// PageContentView滑动调用
     ///
@@ -30,7 +30,7 @@ protocol IMPageContentDelegate: NSObjectProtocol {
 }
 
 // MARK: - optional
-extension IMPageContentDelegate {
+public extension IMPageContentDelegate {
     
     /// PageContentView 开始滑动
     func contentViewWillBeginDragging(_ contentView: IMPageContentView) {
@@ -46,9 +46,9 @@ extension IMPageContentDelegate {
 open class IMPageContentView: UIView {
     
     /// PageContentDelegate
-    weak var delegate: IMPageContentDelegate?
+    public weak var delegate: IMPageContentDelegate?
     /// 设置contentView当前展示的页面索引，默认为0
-    var contentViewCurrentIndex: Int = 0 {
+    public var contentViewCurrentIndex: Int = 0 {
         didSet {
             if contentViewCurrentIndex < 0 || contentViewCurrentIndex > self.childVCs.count - 1 {
                 return
@@ -58,7 +58,7 @@ open class IMPageContentView: UIView {
         }
     }
     /// 设置contentView能否左右滑动，默认YES
-    var contentViewCanScroll: Bool = true {
+    public var contentViewCanScroll: Bool = true {
         didSet {
             collectionView.isScrollEnabled = contentViewCanScroll
         }
@@ -88,7 +88,7 @@ open class IMPageContentView: UIView {
     private var startOffsetX: CGFloat = 0
     private var isSelectBtn: Bool = false
     
-    convenience init(Frame: CGRect, childVCs: [UIViewController], parentVC: UIViewController) {
+    public convenience init(Frame: CGRect, childVCs: [UIViewController], parentVC: UIViewController) {
         
         self.init(frame: Frame)
         self.childVCs = childVCs

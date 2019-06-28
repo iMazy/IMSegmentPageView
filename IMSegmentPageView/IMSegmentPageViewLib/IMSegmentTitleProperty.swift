@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class IMSegmentTitleProperty {
+open class IMSegmentTitleProperty {
     
     public init() {}
     

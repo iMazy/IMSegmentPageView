@@ -16,7 +16,7 @@ public enum IMIndicatorType {
     case none
 }
 
-protocol IMSegmentTitleViewDelegate: NSObjectProtocol {
+public protocol IMSegmentTitleViewDelegate: NSObjectProtocol {
     
     /// 切换标题
     ///   - startIndex: 切换前标题索引
@@ -41,14 +41,14 @@ open class IMSegmentTitleView: UIView {
     private var indicatorType: IMIndicatorType = .default
     private var isInitinaled: Bool = false
     
-    weak var delegate: IMSegmentTitleViewDelegate?
+    public weak var delegate: IMSegmentTitleViewDelegate?
     /// 标题
     private var titles: [String] = []
     /// 属性
     private var property: IMSegmentTitleProperty!
     
     /// 当前选中标题索引，默认0
-    var selectIndex: Int = 0 {
+    public var selectIndex: Int = 0 {
         didSet {
             if selectIndex < 0 || selectIndex > itemButtons.count - 1 {
                 return

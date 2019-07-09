@@ -3,6 +3,8 @@ This is a segment titleView and pageView menu.
 
 IMSegmentPageView is a Swift library that provides a customizable segment titleView and pageView menu.
 
+![image](https://github.com/iMazy/IMSegmentPageView/blob/master/IMSegmentPageView/iphonexspacegrey_landscape.png)
+
 ## Requirements
 
 - iOS 9.0+
@@ -12,7 +14,7 @@ IMSegmentPageView is a Swift library that provides a customizable segment titleV
 
 Drop in the Classes folder to your Xcode project.  
 
-#### Using [cocoapods](http://cocoapods.org/)
+#### Using [Cocoapods](http://cocoapods.org/)
 
 Add `pod 'IMSegmentPageView'` to your `Podfile` and run `pod install`. Also add `use_frameworks!` to the `Podfile`.
 

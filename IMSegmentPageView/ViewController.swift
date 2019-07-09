@@ -70,7 +70,6 @@ class ViewController: UIViewController {
         var childVCs: [UIViewController] = []
         for title in titles {
             let childVC = DemoTableViewController()
-//            childVC.view.backgroundColor = UIColor.random()
             childVC.title = title
             childVCs.append(childVC)
         }

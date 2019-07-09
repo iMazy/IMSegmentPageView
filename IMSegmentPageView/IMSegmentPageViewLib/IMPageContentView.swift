@@ -130,8 +130,8 @@ extension IMPageContentView: UICollectionViewDataSource, UICollectionViewDelegat
 }
 
 extension IMPageContentView {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isSelectBtn = false
         startOffsetX = scrollView.contentOffset.x
         if let delegate = self.delegate {
@@ -139,7 +139,7 @@ extension IMPageContentView {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if isSelectBtn {
             return
         }
@@ -168,7 +168,7 @@ extension IMPageContentView {
         self.delegate?.contentViewDidScroll(self, startIndex: startIndex, endIndex: endIndex, progress: pregress)
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let scrollViewWidth = scrollView.bounds.width
         let currentOffsetX = scrollView.contentOffset.x
         let startIndex = Int(floor(startOffsetX / scrollViewWidth))
@@ -176,7 +176,7 @@ extension IMPageContentView {
         delegate?.contenViewDidEndDecelerating(self, startIndex: startIndex, endIndex: endIndex)
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         delegate?.contenViewDidEndDragging(self)
     }
 }

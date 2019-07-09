@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name             = "IMSegmentPageView"
-s.version          = "1.0.1"
+s.version          = "1.0.2"
 s.summary          = "A segment titleView and pageView menu"
 
 s.description      = "IMSegmentPageView is a Swift library that provides a customizable segment titleView and pageView menu"
